@@ -34,9 +34,9 @@
 //!     stathz: libc::c_int, /* statistics clock frequency */
 //!     profhz: libc::c_int, /* profiling clock frequency */
 //! }
-//! # #[cfg(any(target_os = "macos", target_os = "ios", target_os = "tvos", target_os = "visionos", target_os = "freebsd"))]
+//! # #[cfg(any(target_os = "macos", target_os = "ios", target_os = "tvos", target_os = "visionos", target_os = "freebsd", target_os = "netbsd"))]
 //! let val: Box<ClockInfo> = sysctl::Ctl::new("kern.clockrate").unwrap().value_as().unwrap();
-//! # #[cfg(any(target_os = "macos", target_os = "ios", target_os = "tvos", target_os = "visionos", target_os = "freebsd"))]
+//! # #[cfg(any(target_os = "macos", target_os = "ios", target_os = "tvos", target_os = "visionos", target_os = "freebsd", target_os = "netbsd"))]
 //! println!("{:?}", val);
 //! ```
 
@@ -54,7 +54,7 @@ extern crate walkdir;
 #[path = "linux/mod.rs"]
 mod sys;
 
-#[cfg(any(target_os = "macos", target_os = "ios", target_os = "tvos", target_os = "visionos", target_os = "freebsd"))]
+#[cfg(any(target_os = "macos", target_os = "ios", target_os = "tvos", target_os = "visionos", target_os = "freebsd", target_os = "netbsd"))]
 #[path = "unix/mod.rs"]
 mod sys;
 
