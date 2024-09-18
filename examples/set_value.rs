@@ -7,10 +7,7 @@ extern crate sysctl;
 // Import the trait
 use sysctl::Sysctl;
 
-#[cfg(target_os = "freebsd")]
-const CTLNAME: &str = "net.inet.ip.forwarding";
-
-#[cfg(target_os = "macos")]
+#[cfg(any(target_os = "freebsd", target_os = "macos", target_os = "netbsd"))]
 const CTLNAME: &str = "net.inet.ip.forwarding";
 
 #[cfg(any(target_os = "linux", target_os = "android"))]

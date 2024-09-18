@@ -300,7 +300,7 @@ mod tests {
 
         let descp = descp.unwrap();
 
-        #[cfg(target_os = "freebsd", target_os = "netbsd")]
+        #[cfg(any(target_os = "freebsd", target_os = "netbsd"))]
         assert_eq!(descp, "Operating system type");
 
         #[cfg(any(target_os = "macos", target_os = "ios", target_os = "tvos", target_os = "visionos", target_os = "linux"))]
