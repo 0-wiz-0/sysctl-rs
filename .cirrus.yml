@@ -61,3 +61,16 @@ test_task:
     - cargo update -Zdirect-minimal-versions
     - cargo check --all-targets
   before_cache_script: rm -rf $CARGO_HOME/registry/index
+
+task:
+  name: NetBSD
+  compute_engine_instance:
+    image_project: pg-ci-images
+    # NetBSD version should match
+    # https://github.com/anarazel/pg-vm-images/blob/main/packer/netbsd.pkrvars.hcl
+    image: family/pg-ci-netbsd-vanilla-10-0
+    platform: netbsd
+  install_script: |
+    fetch https://sh.rustup.rs -o rustup.sh
+    sh rustup.sh -y --profile=minimal
+  << : *TEST
