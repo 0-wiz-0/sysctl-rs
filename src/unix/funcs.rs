@@ -196,6 +196,7 @@ pub fn value_oid(oid: &[i32]) -> Result<CtlValue, SysctlError> {
     }
 
     // Special treatment for temperature ctls.
+    #[cfg(target_os = "freebsd")]
     if info.is_temperature() {
         return temperature(&info, &val);
     }
